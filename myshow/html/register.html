@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>走秀网-注册</title>
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+	<link rel="stylesheet" href="../css/reset.css" />
+	<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	<style type="text/css">
+		body{
+		    background-color: #f3eff0;
+		    display: flex;
+		}
+		.out{
+			width: 6.4rem;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		header{
+			height: 0.88rem;
+			font-size: 0.34rem;
+			line-height: 0.88rem;
+			background-color: #C9302C;
+			text-align: center;
+			color: #fff;
+		}
+		header .zuo{
+			float: left;
+			margin-left: 0.24rem;
+		}
+		section{
+			flex: 1;
+			
+		}
+		form{
+			padding: 0.3rem;
+		}
+		form div{
+			height: 0.8rem;
+			margin-bottom:0.27rem ;
+			background-color: #fff;
+			line-height: 0.8rem;
+			font-size: 0.28rem;
+			color: #333;
+			text-indent: 0.2rem;
+		}
+		form input{
+			color: #9b9b9b;
+			text-indent: 0.06rem;
+			border:0;
+			outline: none;
+		}
+		.btn{
+			background: url(../img/gwc.jpg);
+			border-radius: 0.1rem;
+			width: 5.75rem;
+			height: 0.88rem;
+			margin-top: 1.5rem;
+			font-size: 0.36rem;
+			color: #fff;
+			line-height: 0.68rem;
+			margin-left:0.3rem;
+			margin-right: 0.3rem;
+		}
+	</style>
+</head>
+<body>
+	<div class="out">
+		<header>
+			<i class="iconfont zuo" onclick="history.back(-1)">&#xe600;</i>
+		<span>用户注册</span>
+		</header>
+	<section>
+			<form>
+				<div class='names'><span>账户名称：</span><input type="text" class="txt" placeholder="请输入账号"/></div>
+				<div class="psw1"><span>账户密码：</span><input type="password" class="psw" placeholder="请输入密码"/></div>
+				<div class="repsw2"><span>确认密码：</span><input type="password" class="repsw" placeholder="请输入密码"/></div>
+			</form>
+			<button class="btn">确定注册</button>
+	</section>
+	</div>
+</body>
+<script type="text/javascript" src="../js/rem.js"></script>
+<script type="text/javascript" src="../js/zepto-1.1.6.min.js"></script>
+<script type="text/javascript" src="../js/touch.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".btn").on('tap',function(){
+			var name=$(".txt").val()
+			var pas=$(".psw").val()
+			console.log(name,pas)
+			$.ajax({
+				type:"get",
+				url:" http://datainfo.duapp.com/shopdata/userinfo.php",
+				data:{status:'register',userID:name,password:pas},
+				success:function(data){
+					console.log(data)
+					console.log($(".txt").val())
+					if($(".txt").val()==''){
+						alert("用户名不能为空")
+					}else{
+						if($(".psw").val()==''){
+							alert("密码不能为空")
+						}else{
+							if($(".psw").val()!=$(".repsw").val()){
+								alert("两次密码不一致")
+							}else{
+								if(data==0){
+										alert("用户名重名")
+									}else{
+										if(data==1){
+											alert("注册成功");
+											window.location.href='login.html'
+										}else{
+											alert("浏览器报错")
+										}
+									}	
+							}
+						}
+					}
+				}
+			});
+		})	
+	})
+</script>
+
+</html>

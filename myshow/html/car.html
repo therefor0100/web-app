@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>走秀网-购物车</title>
+	<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+	<link rel="stylesheet" type="text/css" href="lib2/swiper-3.3.1.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../icons/iconfont.css"/>
+	<style type="text/css">
+		html,body{width: 100%;height: 100%;background-color: #f3eff0;}
+		body{
+			font-family: "微软雅黑";
+			height: 100vh;
+			width: 100vw;
+			display: flex;
+			flex-wrap: wrap;
+			overflow: auto;
+		}
+		/*头部开始*/
+		header{
+			width: 100%;
+			height: 0.88rem;
+			background-image: url(../img/head.jpg);
+			font-size: 0.36rem;
+			line-height: 0.88rem;
+			text-align: center;
+			color: #fff;
+			position: fixed;
+			z-index: 9999;
+			}
+		header .zuo{
+				float: left;
+				margin-left: 0.34rem;
+			}
+		header .sp2{
+				position: absolute;
+				display: block;
+				width: 1.05rem;
+				height: 0.57rem;
+				background-image: url(../img/gwc.jpg);
+				line-height: 0.57rem;
+				border-left: 1px solid #a41614;
+				border-right: 1px solid #a41614;
+				border-radius: 0.1rem;
+				top:0.15rem;
+				right: 0.2rem;
+			}
+		header .icon-gouwuche2{
+			font-size: 0.38rem;
+			color: #fff;
+		}
+		/*底部*/
+		footer{
+			height: 0.98rem;
+			line-height: 0.98rem;
+			width: 100%;
+			display: flex;
+			background: #484850;
+			position: fixed;
+			bottom: 0;
+		}
+		footer a{
+			float: left;
+			flex: 1;
+			width: 20%;
+			text-align: center;
+			font-size: 16px;
+		}
+		footer i{
+			display: block;	
+			height: 0.26rem;
+			font-size: 0.26rem;
+			margin: 0;
+			padding: 0;
+			color: #fff;
+		}
+		footer span{
+			display: block;
+			margin-top: 0.03rem;
+			color: #fff;
+		}
+		/*中间*/
+		section{
+			
+			width: 100%;
+			position: relative;
+			flex:1; 
+			top:0.88rem;
+			margin-bottom: 0.88rem;
+			
+		}
+		section nav{
+			width: 100%;
+			padding-left: 0.25rem;
+			padding-right: 0.22rem;
+			height: 0.9rem;
+			background-color: #747474;
+			font-size: 0.3rem;
+			line-height: 0.9rem;
+			color: #fff;
+			position: fixed;
+		}
+		.box{
+			margin-top: 0.9rem;
+			/*padding-left: 0.33rem;
+			padding-right: 0.22rem;*/
+		}
+		.box dl{
+			height: 1.74rem;
+			padding:0.27rem 0.22rem 0.3rem 0.33rem;
+			line-height: 0.48rem;
+			font-size: 0.3rem;
+			color: #333;
+			border-bottom: 1px solid #ccc;
+		}
+		.box dt{
+			width:1.75rem;
+			height: 1.74rem;
+			float: left;
+			margin-right: 0.26rem;
+		}
+		.box dt img{
+			width:1.75rem;
+			height: 1.74rem;
+		}
+		.box button{
+			width: 0.57rem;
+			height: 0.42rem;
+			border-radius: 0.1rem;
+			outline: none;
+			background-color: #909090;
+			color: #fff;
+			text-align: center;
+			line-height: 0.32rem;
+			font-size: 0.2rem;
+		}
+		.box .pre{
+			width: 0.76rem;
+			height: 0.43rem;
+			display: inline-block;
+			text-align: center;
+			line-height: 0.43rem;
+			font-size: 0.22rem;
+			border-radius: 0.1rem;
+			margin-left: 0.1rem;
+			margin-right: 0.1rem;
+		}
+		.box .top{
+			/*position: relative;*/
+			height: 0.96rem;
+			overflow: hidden;
+			
+		}
+		.box .top .tit{
+			width: 3.16rem;
+			display: inline-block;
+		}
+		.box .shan{
+			position: absolute;
+			right: 0.2rem;
+			margin-top: -1rem;
+		}
+		.box .pri{
+			color: #aa1a1a;
+		}
+		.box .pri i{
+			font-style: normal;
+		}
+		nav .money{
+			font-style: normal;
+			
+		}
+		nav .counts{
+			color: #ab1b1b;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		
+		<span>购物车</span>
+		<span class="sp2">结算</span>
+	</header>
+	<section>
+		<nav>
+			<span class="nums">商品数量 ：<span class="num">0</span></span>
+			<span class="zong">应付总额(不包含运费):<span class="counts">￥<i class="money"></i></span></span>
+		</nav>
+		<div class="box"></div>
+	</section>
+
+    <footer>
+    	
+    	<a href="header.html"><i class="iconfont icon-shouye"></i><span>首页</span></a>
+    	<a href="header.html"><i class="iconfont icon-fenlei"></i><span>分类</span></a>
+    	<a href="car.html"><i class="iconfont icon-gouwuche2"></i><span>购物车</span></a>
+    	<a href="myself.html"><i class="iconfont icon-wode"></i><span>我的秀</span></a>
+    	<a href="award.html"><i class="iconfont">&#xe61f;</i><span>更多</span></a>
+    	
+    </footer>
+   
+</body>
+<script type="text/javascript" src="../js/rem.js"></script><script type="text/javascript" src="../js/zepto-1.1.6.min.js"></script>
+<script type="text/javascript" src="../js/touch.min.js"></script>
+<script src="lib2/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="../../iscroll/js/swiper-3.3.1.jquery.min.js"></script>
+
+<script type="text/javascript" src="lib2/swiper-3.3.1.min.js"></script>
+<!--<script src="../js/template.js" type="text/javascript" charset="utf-8"></script>-->
+
+
+<script type="text/javascript">
+
+	$(function(){
+		
+		var getLoc=localStorage.getItem("0100")
+		var userId=JSON.parse(getLoc).userID;
+		
+		console.log(userId)
+		var pres=1;
+		var goodid='';
+		var count=0;
+		var sum=0
+
+//		var index=window.location.href.split("=")[1]
+//			console.log(index);
+			
+			$.ajax({
+				type:"get",
+				url:"http://datainfo.duapp.com/shopdata/getCar.php",
+				data:{userID:userId},
+				dataType:'jsonp',
+				success:function(data){
+					var con1="";
+					var num="";
+					var money="";
+					
+					console.log(data);
+					
+					for(var i in data){
+//					arr.push(data[i].goodsID);
+						con1+="<dl class="+data[i].goodsID+"><dt><img src="+data[i].goodsListImg+"></dt><dd><p class='top'><span class='tit'>"+data[i].goodsName+"</span></p><i class='iconfont shan'>&#xe666;</i><p>单价：<span class='pri'>￥<i>"+data[i].price+"</i></span></p><p>数量  <button class='jian'>-</button><input type='text' id='count' value="+pres+" class='pre'/><button class='jia' id='add'>+</button></p></dd></dl>"
+						
+					}
+				
+					$(".box").html(con1);
+					
+					//购物车商品操作
+					
+					//删除
+					$(".shan").each(function(i){
+						
+						$(this).on('tap',function(){			
+							
+							$(this).parents('dl').remove();
+							
+							$.ajax({
+								type:"get",
+								url:" http://datainfo.duapp.com/shopdata/updatecar.php",
+								data:{number:0,userID:userId,goodsID:$(this).parents('dl').get(0).className},
+								success:function(data){
+									console.log(data);
+									if(data==1){
+										alert("删除成功")
+									}else{
+										alert("删除失败")
+									}
+								}
+								
+							});
+							
+						})
+						
+					})
+					//增加
+					function add(){
+						
+						$(".jia").each(function(i){
+							var user=userId;
+//							 
+							var goodid=$(this).parents('dl').get(0).className;
+							
+							$(this).on('tap',function(){
+								
+								pres=Number($(".pre").eq(i).val())+1;
+								
+								nums=pres;
+								
+								$(".pre").eq(i).val(pres);
+
+								updatecar(user,goodid,nums);
+								
+								
+							})
+						})
+					}
+					add();
+					//减少
+					var nums=0;
+					function jian(){
+						
+						$(".jian").each(function(i){
+							
+							var user=userId;
+//							 
+							var goodid=$(this).parents('dl').get(0).className;
+							
+							
+							$(this).on('tap',function(){
+								
+								pres=Number($(".pre").eq(i).val())-1;
+								
+								nums=pres;
+								
+								if(pres<=0){
+									
+									$(".pre").eq(i).val(0);
+//									shanchu(user,goodid)
+									
+									
+								}else{
+									
+								$(".pre").eq(i).val(nums);
+								
+								
+								updatecar(user,goodid,nums);
+
+								
+								}
+							
+							
+							
+							})
+						})
+					}
+					jian();
+//					console.log($(".pre").val())
+					//总计
+				
+					//总数目
+//					function nums(){
+//						
+//					}
+					
+					
+				}				
+			});
+		
+		
+		function getcar(){
+			
+			$.ajax({
+				type:"get",
+				url:"http://datainfo.duapp.com/shopdata/getCar.php",
+				async:true,
+				data:{userID:userId},
+				dataType:"jsonp",
+				success:function(data){
+					
+					
+					
+					for(var i=0;i<data.length;i++){
+						
+						$(".pre").eq(i).val(data[i]["number"]);
+						
+						console.log(data[i].number);
+						
+						sum+=Number(data[i].number);
+						
+						$(".num").html(sum)
+						//总价
+						count+=Number(data[i].price);
+						
+						$(".money").html(count*sum)
+						console.log(sum)
+					}
+					
+				}
+			});
+		}
+		
+	getcar()
+		
+		
+		
+		
+		
+		
+		
+		function updatecar(userId,goodsId,num){	
+			
+			$.ajax({
+				type:"get",
+				url:"http://datainfo.duapp.com/shopdata/updatecar.php",
+				data:{userID:userId,goodsID:goodsId,number:num},
+				success:function(data){
+					
+					if(data==1){
+						
+						alert("操作成功");
+						
+						console.log(data);
+						
+//						getcar();
+						
+						
+					}
+					else{
+						alert("操作失败")
+					}
+				}
+			});	
+		}
+		
+		//删除
+//		function shanchu(userId,goodsId){
+//			$.ajax({
+//				type:"get",
+//				url:" http://datainfo.duapp.com/shopdata/updatecar.php",
+//				data:{userID:userId,goodsID:goodsId,number:0},
+//				success:function(data){
+//					console.log(data);
+//					if(data==1){
+//						alert("删除成功")
+//					}else{
+//						alert("删除失败")
+//					}
+//				}
+//				
+//			});
+//		}
+		
+		
+	})
+	
+	 
+	
+</script>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>走秀网-登录</title>
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+	<link rel="stylesheet" href="../css/reset.css" />
+	<style type="text/css">
+		body{
+		    background-color: #f8f8f8;
+		}
+		.out{
+			width: 6.4rem;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		header{
+			height: 0.88rem;
+			font-size: 0.34rem;
+			line-height: 0.88rem;
+			background-color: #C9302C;
+			text-align: center;
+			color: #fff;
+		}
+		section{
+			height: 8.3rem;
+			
+		}
+		.content{
+			width: 5.8rem;
+			margin: 0 auto;
+		}
+		form{
+			padding: 0.3rem;
+			width: 5.8rem;
+			height: 6rem;
+			font-size: 0.3rem;
+		}
+		input{
+			height: 0.84rem;
+			display: block;
+			outline: none;
+		}
+		#uName,#psw,#login,#register{
+			width: 100%;
+			margin-bottom: 0.15rem;
+			border: 0;
+			text-indent: 0.1rem;
+		}
+		#uName,#psw{
+			color: #555555;
+		}
+		section div{
+			height: 0.8rem;
+			margin-left: 0.2rem;
+		}
+		section div:first-of-type{
+			margin-top: 0.5rem;
+		}
+		.check{
+			width: 0.4rem;
+			height: 0.4rem;
+			background-color: #fff;
+			border:1px solid #000000;
+			display: inline-block;
+			float: left;margin-right: 0.1rem;
+		}
+		section div a{
+			color: #C9302C;
+		}
+		#login,#register{
+			text-indent: 0rem;
+			font-size: 0.34rem;
+			color: #fff;
+			line-height: 0.84rem;
+		}
+		#login{
+			background-color: #C9302C;
+			
+		}
+		#register{
+			background-color: #555555;
+		}
+	</style>
+</head>
+<body>
+	<div class="out">
+		<header>
+		开心摇摇用户登录
+		</header>
+	<section>
+
+			<form>
+				
+				<input type="text" name="uName" id="uName" value="" placeholder="请输入账户"/>
+				<input type="password" name="psw" id="psw" value="" placeholder="请输入密码" />
+		
+				<div><input type="checkbox" name="" class="check" value="" id="check1"/>显示密码 <a href="javascript">忘记密码？</a></div>
+				<div><input type="checkbox" name="" class="check" id="check2" value="" />记住密码自动登录</div>
+				
+				<input type="button" name="login" id="login" value="登录" />
+				<input type="button" name="register" id="register" value="注册" />
+			</form>
+
+	</section>
+	</div>
+</body>
+<script type="text/javascript" src="../js/rem.js"></script>
+<script type="text/javascript" src="../js/zepto-1.1.6.min.js"></script>
+<script type="text/javascript" src="../js/touch.min.js"></script>
+<script type="text/javascript">
+//	//注册
+	$("#register").on("tap",function(){
+		window.location.href="register.html"
+	})
+	//显示/隐藏密码
+	$("#check1").on("tap",function(){
+		if($("#check1")[0]["checked"]){
+			$("#psw")[0].type="text"
+		}else{
+			$("#psw")[0].type="password"
+		}
+	})		
+	//登录
+	$("#login").on("tap",function(){
+		$.ajax({
+			type:"get",
+			url:"http://datainfo.duapp.com/shopdata/userinfo.php",
+			data:{status:"login",userID:$('#uName').val(),password:$("#psw").val()},
+			dataType:"json",
+			success:function(data){
+				if(data==0){
+					alert("用户名不存在 ")
+				}
+				if(data==2){
+					alert("用户名与密码不匹配")
+				}
+				if((data!==2)&&(data!==0)&&$('#uName').val()!==""&&$("#psw").val()!==""){
+					window.location.href="header.html"
+				}
+				//是否存储密码
+				if($("#check2")[0]["checked"]){
+					var obj={
+						userID:$('#uName').val(),
+						password:$("#psw").val()
+					}
+					var objs=JSON.stringify(obj)
+					localStorage.setItem("0100",objs)	
+				}
+				else{
+					sessionStorage.setItem(userID,$('#uName').val())
+				}
+			}
+		});
+	})
+	
+</script>
+
+</html>

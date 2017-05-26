@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>走秀网-我的</title>
+	<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+	<link rel="stylesheet" type="text/css" href="lib2/swiper-3.3.1.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../icons/iconfont.css"/>
+	<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	<script src="../js/jquery-2.2.3.min.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css">
+		html,body{width: 100%;height: 100%;}
+		body{
+			font-family: "微软雅黑";
+			height: 100vh;
+			width: 100vw;
+			display: flex;
+			flex-wrap: wrap;
+			overflow: hidden;
+			background-color: #f7f7f7;
+		}
+		/*头部开始*/
+		header{
+			width: 100%;
+			height: 0.88rem;
+			background-image: url(../img/head.jpg);
+			font-size: 0.36rem;
+			line-height: 0.88rem;
+			text-align: center;
+			color: #fff;
+			position: fixed;
+			}
+		header .sp2{
+			position: absolute;
+			display: block;
+			width: 1.05rem;
+			height: 0.57rem;
+			background-image: url(../img/gwc.jpg);
+			line-height: 0.57rem;
+			border-left: 1px solid #a41614;
+			border-right: 1px solid #a41614;
+			border-radius: 0.1rem;
+			top:0.15rem;
+			right: 0.2rem;
+		}
+		header .icon-gouwuche2{
+			font-size: 0.38rem;
+			color: #fff;
+		}
+		/*底部*/
+		footer{
+			height: 0.98rem;
+			line-height: 0.98rem;
+			width: 100%;
+			display: flex;
+			background: #484850;
+			position: fixed;
+			bottom: 0;
+		}
+		footer a{
+			float: left;
+			flex: 1;
+			width: 20%;
+			text-align: center;
+			font-size: 16px;
+		}
+		footer i{
+			display: block;	
+			height: 0.26rem;
+			font-size: 0.26rem;
+			margin: 0;
+			padding: 0;
+			color: #fff;
+		}
+		footer span{
+			display: block;
+			margin-top: 0.03rem;
+			color: #fff;
+		}
+		/*中间*/
+		section{
+		
+			width: 100%;
+			position: relative;
+			flex:1; 
+			top:0.88rem;
+			margin-bottom: 0.88rem;
+			padding-left: 0.3rem;
+			padding-right: 0.44rem;
+		}
+		 section dl{
+		 	height: 1.66rem;
+		 	margin-top: 0.60rem;
+		 	margin-bottom: 0.8rem;
+		 }
+		 section dt{
+		 	width: 1.66rem;
+		 	height: 1.66rem;
+		 	float: left;
+		 	margin-right: 0.3rem;
+		 	border-radius: 0.5rem;
+		 }
+		 section dt img{
+		 	width: 100%;
+		 	height: 100%;
+		 	border-radius: 0.5rem;
+		 	display: block;
+		 }
+		 section dd{
+		 	font-size: 0.38rem;
+		 	line-height: 0.6rem;
+		 	
+		 }
+		 section .money{
+		 	color: #f00202;
+		 }
+		 section ul{
+		 	height: 3.64rem;
+		 	border:1px solid #ccc;
+		 	border-radius: 0.15rem;
+		 	background-color: #fff;
+		 }
+		  section ul li{
+		  	height: 0.88rem;
+		  	line-height: 0.88rem;
+		  	border-bottom: 1px solid #ccc;
+		  	text-indent: 0.3rem;
+		  	font-size: 0.34rem;
+		  }
+		  ul li:last-of-type{
+		  	border-bottom: 0;
+		  }
+		  ul li i{
+		  	float: right;
+		  	margin-right: 0.28rem;
+		  }
+		  .modal-content{
+		  	    width: 4.74rem;
+			    height: 3.7rem;
+			    border-radius: 0.3rem;
+			    left: 0;
+			    top: 3rem;
+			    right: 0;
+			    bottom: 0;
+			    margin: auto;
+			    text-align: center;
+			    background-color: #e8e8e8;
+		  }
+		  .modal-content .tits{
+		  	height: 0.94rem;
+		  	line-height: 0.94rem;
+		  	color: #333333;
+		  	border-bottom: 1px solid #ccc;
+		  	width: 3.76rem;
+		  	margin-right: 0.42rem;
+		  	margin-left: 0.42rem;
+		  	font-size: 0.32rem;
+		  }
+		  .modal-content .imgs{
+		  	width:3.29rem;
+		  	height: 1.75rem;
+		  	margin: 0.26rem 0.73rem 0.68rem 0.67rem;
+		  	background-color: #f00;
+		  	
+		  }
+		  .modal-content .imgs dl{
+		  	width: 1.14rem;
+		  	height: 1.75rem;
+		  }
+	</style>
+</head>
+<body>
+	<header>
+		<span>我的秀</span>
+		<span class="sp2">充值</span>
+	</header>
+	<section>
+		<dl>
+			<dt><img src="../img/img1.jpg" alt="" data-toggle="modal" data-target=".bs-example-modal-sm"/>
+
+		<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+		  <div class="modal-dialog modal-sm" role="document">
+		    <div class="modal-content">
+		      <p class="tits">选择操作</p>
+		      
+		      
+		      <div class="imgs">
+		      	<dl>
+		      		<dt><img src="../img/camera.gif" alt="" /></dt>
+		      		<dd>相机</dd>
+		      	</dl>
+		      	<dl>
+		      		<dt><img src="../img/xiangji.gif" alt="" /></dt>
+		      		<dd>相册</dd>
+		      	</dl>
+		      	
+		      	
+		      	
+		      </div>
+		    </div>
+		  </div>
+		</div>
+			</dt>
+			<dd>
+				<p>昵称：<span class="names">未知</span></p>
+				<p>余额：<span class="money">0</span></p>
+			</dd>
+		</dl>
+		<ul class="uls">
+			<li>我的订单 <i class="iconfont">&#xe631;</i></li>
+			<li>我的优惠券 <i class="iconfont">&#xe631;</i></li>
+			<li>浏览记录  <i class="iconfont">&#xe631;</i></li>
+			<li class="last">我的收藏  <i class="iconfont">&#xe631;</i></li>
+		</ul>
+		
+	</section>
+
+    <footer>
+    	
+    	<a href="header.html"><i class="iconfont icon-shouye"></i><span>首页</span></a>
+    	<a href="header.html"><i class="iconfont icon-fenlei"></i><span>分类</span></a>
+    	<a href="car.html"><i class="iconfont icon-gouwuche2"></i><span>购物车</span></a>
+    	<a href="myself.html"><i class="iconfont icon-wode"></i><span>我的秀</span></a>
+    	<a href="award.html"><i class="iconfont">&#xe61f;</i><span>更多</span></a>
+    	
+    </footer>
+   
+</body>
+<script type="text/javascript" src="../js/rem.js"></script><script type="text/javascript" src="../js/zepto-1.1.6.min.js"></script>
+<script type="text/javascript" src="../js/touch.min.js"></script>
+<script type="text/javascript" src="../../iscroll/js/swiper-3.3.1.jquery.min.js"></script>
+<script type="text/javascript" src="lib2/swiper-3.3.1.min.js"></script>
+<script src="../js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(function(){
+			var getLoc=localStorage.getItem("0100")
+			var getName=JSON.parse(getLoc).userID
+			console.log(getName)
+			$.ajax({
+				type:"get",
+				url:"http://datainfo.duapp.com/shopdata/getuser.php",
+				data:{userID:getName},
+				dataType:'jsonp',
+				success:function(data){
+					console.log(data);
+					if(data==0){
+						$(".names").html("未知")
+					}else{
+						var user="";
+						for(var i in data){
+							console.log(data)
+							user="<span>"+data[i].userID+"</span>"
+						}
+						$(".names").html(user)	
+					}
+				}
+			});
+			
+	})
+</script>
+</html>

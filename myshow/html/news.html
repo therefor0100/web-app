@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>商品详情</title>
+	<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+	<link rel="stylesheet" type="text/css" href="lib2/swiper-3.3.1.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../icons/iconfont.css"/>
+	<style type="text/css">
+		html,body{width: 100%;height: 100%;background-color: #f3eff0;}
+		body{
+			font-family: "微软雅黑";
+			height: 100vh;
+			width: 100vw;
+			display: flex;
+			flex-wrap: wrap;
+			overflow: hidden;
+		}
+		/*头部开始*/
+		header{
+			width: 100%;
+			height: 0.88rem;
+			background-image: url(../img/head.jpg);
+			font-size: 0.36rem;
+			line-height: 0.88rem;
+			text-align: center;
+			color: #fff;
+			position: fixed;
+			}
+		header .zuo{
+				float: left;
+				margin-left: 0.34rem;
+			}
+		header .sp2{
+				position: absolute;
+				display: block;
+				width: 1.05rem;
+				height: 0.57rem;
+				background-image: url(../img/gwc.jpg);
+				line-height: 0.57rem;
+				border-left: 1px solid #a41614;
+				border-right: 1px solid #a41614;
+				border-radius: 0.1rem;
+				top:0.15rem;
+				right: 0.2rem;
+			}
+		header .icon-gouwuche2{
+			font-size: 0.38rem;
+			color: #fff;
+		}
+		/*底部*/
+		footer{
+			height: 0.98rem;
+			line-height: 0.98rem;
+			width: 100%;
+			display: flex;
+			background: #484850;
+			position: fixed;
+			bottom: 0;
+		}
+		footer a{
+			float: left;
+			flex: 1;
+			width: 20%;
+			text-align: center;
+			font-size: 16px;
+		}
+		footer i{
+			display: block;	
+			height: 0.26rem;
+			font-size: 0.26rem;
+			margin: 0;
+			padding: 0;
+			color: #fff;
+		}
+		footer span{
+			display: block;
+			margin-top: 0.03rem;
+			color: #fff;
+		}
+		/*中间*/
+		section{
+			background-color: #fff;
+			width: 100%;
+			position: relative;
+			flex:1; 
+			overflow: hidden;
+			top:0.88rem;
+			margin-bottom: 0.88rem;
+		}
+		.con dt{
+			height: 4.26rem;
+			width: 100%;
+			text-align: center;
+			margin-bottom: 0.05rem;
+		}
+		.con dt img{
+			width: 5.76rem;
+			height: 4.26rem;
+		}
+		.con dd{
+			padding-left:0.34rem;
+			padding-right: 0.28rem;
+		}
+		.con p{
+			font-size: 0.32rem;
+			line-height:0.55rem;
+			color: #8a8a8a;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<i class="iconfont zuo" onclick="history.back(-1)">&#xe625;</i>
+		<span>商品详情</span>
+		<span class="sp2"><i class="iconfont icon-gouwuche2"></i></span>
+	</header>
+	<section>
+		<div class="con">
+			
+		</div>
+	</section>
+
+    <footer>
+    	
+    	<a href="header.html"><i class="iconfont icon-shouye"></i><span>首页</span></a>
+    	<a href="header.html"><i class="iconfont icon-fenlei"></i><span>分类</span></a>
+    	<a href="car.html"><i class="iconfont icon-gouwuche2"></i><span>购物车</span></a>
+    	<a href="myself.html"><i class="iconfont icon-wode"></i><span>我的秀</span></a>
+    	<a href="award.html"><i class="iconfont">&#xe61f;</i><span>更多</span></a>
+    	
+    </footer>
+   
+</body>
+<script type="text/javascript" src="../js/rem.js"></script><script type="text/javascript" src="../js/zepto-1.1.6.min.js"></script>
+<script type="text/javascript" src="../js/touch.min.js"></script>
+<script src="lib2/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="../../iscroll/js/swiper-3.3.1.jquery.min.js"></script>
+<script type="text/javascript" src="lib2/swiper-3.3.1.min.js"></script>
+
+<script type="text/javascript">
+	$(function(){
+		var index=window.location.href.split("=")[1]
+			console.log(index)
+			$.ajax({
+				type:"get",
+				url:"http://datainfo.duapp.com/shopdata/getGoods.php",
+				data:{goodsID:index},
+				dataType:'jsonp',
+				success:function(data){
+					var con1="";
+					
+					console.log(data);
+					for(var i in data){
+						console.log(data[i].price)
+//						
+//						img1="<img src="+data[i].goodsListImg+">"
+						con1="<dl><dt><img src="+data[i].goodsListImg+"></dt><dd><p class='name'>"+data[i].goodsName+"</p><p>"+data[i].detail+"</p><p>产地：中国</p><p>商品编号：3215807943</p><p>所属分类："+data[i].className+"</p><p>备注：无配件</p></dd></dl>"
+					}
+					$(".con").html(con1);
+//					$(".slid1").html(img1);
+//					$(".slid2").html(img1)
+//					$(".slid3").html(img1)	
+				}				
+			});
+			
+//			$(".detail").on('tap',function(){
+//				window.location.href= "news.html?=" + data[i].goodsID;	
+//			})
+	})
+	
+	 
+	
+</script>
+</html>

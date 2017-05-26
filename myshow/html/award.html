@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>award</title>
+	<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+	<link rel="stylesheet" type="text/css" href="../../iscroll/iscroll/swiper/swiper-3.3.1.min.css"/>
+	<style type="text/css">
+		body{
+			width: 100%;
+			margin: 0 auto;
+			overflow: hidden;
+			height: 100%;
+			background-color: #F0AD4E;
+			font-family: "微软雅黑";
+		}
+		header{
+			height:0.88rem;
+			background-color: #a90506;
+			line-height: 0.88rem;
+			color: #fff;
+			text-align: center;
+			
+		}
+		.icon-xiangzuo{
+			font-size: 0.42rem;
+			color: #fff;
+			position: absolute;
+			left: 0.25rem;
+		}
+		header span{
+			font-size: 0.37rem;
+		}
+		#btns{
+			position: absolute;
+			right: 0.11rem;
+			width: 1.50rem;
+			height: 0.58rem;
+			background-image: url(../img/border1.jpg);
+			background-repeat: repeat;
+			border:1px solid #860102;
+			outline: none;line-height: 0.58rem;
+			color: #fff;
+			font-size: 0.3rem;
+			border-radius: 0.1rem;
+			top:0.1rem;
+			cursor: pointer;
+		}
+		section{
+			width: 6.10rem;
+			margin: 0.15rem;
+			margin-bottom: 0;
+			background-color: #f3eff0;
+			
+		}
+		.topcont{
+			height: 5.68rem;
+			background-color: #a90506;
+			display: flex;
+		}
+		.topcont ul{
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-flow: wrap;
+			font-size: 0.6rem;
+			color: #fff;
+			text-align: center;
+		}
+		.topcont li{
+			min-width: 2.02rem;
+			min-height: 1.88rem;
+			line-height: 1.88rem;
+			text-align: center;
+			/*width: 33.3%;
+			height: 33.3%;*/
+			
+		}
+		.box .touch{
+			background-color: #640000;
+		}
+		section .footer{
+			margin-top: 0.15rem;
+			height: 2.7rem;
+			border:1px solid #a50708;
+			border-bottom: 0;
+			background-color: #ff4948;
+			overflow: hidden;
+		}
+		section .awardlist{
+			font-size: 0.4rem;
+			line-height: 0.54rem;	
+			text-align: center;
+		}
+		section .awardlist li{
+			display: flex;
+			justify-content: space-between;
+		}
+		section .awardlist li span{
+			display: inline-block;
+		}
+		section .war{
+			width: 1.2rem;
+		}
+		section .names{
+			width: 1rem;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			text-align: left;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<i class="iconfont icon-xiangzuo" onclick="history.back(-1)"></i>
+		<span>转盘抽奖</span>
+		<button id="btns">退出登录</button>
+	</header>
+	<section>
+			<div class="topcont">
+				<ul class="box">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li>抽奖</li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+		</div>
+		</div>
+		<footer class="footer" id="marquee">
+			<ul class="awardlist"></ul>
+		</footer>	
+	</section>
+</body>
+<script type="text/javascript" src="../js/rem.js"></script>
+<script type="text/javascript" src="../js/zepto-1.1.6.min.js"></script>
+<script type="text/javascript" src="../js/touch.min.js"></script>
+<script type="text/javascript" src="../../iscroll/iscroll/swiper/swiper-3.3.1.jquery.min.js"></script>
+<script type="text/javascript" src="lib2/swiper-3.3.1.min.js">
+	
+</script>
+<script type="text/javascript" src="../../iscroll/iscroll/swiper/swiper.animate1.0.2.min.js"></script>	
+<script type="text/javascript">
+//	Window.onload=function(){
+		$(function(){
+			var $li=$(".topcont li");
+			console.log($li);
+			$li.eq(4).css('background-color','#640000');
+			$li.not($li.eq(4)).addClass("uli");
+			$li.eq(4).addClass('btn');
+			console.log($(".uli"))
+			var $uli=$(".uli")
+			var getLoc=localStorage.getItem("0100")
+			var getName=JSON.parse(getLoc).userID
+
+			$(".btn").on('tap',function(){
+					var newArr = getNewarr($uli);
+					var win=getRandom();
+					var speed=50;
+					var index=0;
+					action();
+				function action(){
+					speed+=10;
+					$(".touch").not($li.eq(4)).html("")
+					 newArr.removeClass("touch");
+         			 newArr.eq(index).addClass("touch");
+         			 $(".touch").html("抽奖")
+					 index++;	
+				          
+				}
+			console.log(win);
+					$.ajax({
+						type:"get",
+						url:"http://datainfo.duapp.com/lottery/fruitsubmit.php",
+						async:true,
+						data:{userID:getName,fruit:win},
+						success:function(data){
+							console.log(data);
+							if(data==1){
+								
+								 var timer =  setTimeout(function(){
+
+							            if(index > 7){
+							              index = 0;
+							            }
+							            if(speed > 200){
+							              speed = 200;
+							            }
+							            if(index == win){
+							
+							              if(speed >= 200){
+							                //clearInterval(timer);
+							                if(win == 0){
+							                  alert("再接再厉")
+							                }else{
+							                  alert("亲 恭喜你中了 " + win + " 等奖~");
+							                  
+							                }
+							              }else{
+							                action();
+							              }
+							            }else{
+							              action();
+							            }
+							          },speed)	
+	
+							}else{
+								alert("该用户已抽过奖")
+							}
+						}
+					});
+
+			})
+		
+			 function getRandom(){
+		        return Math.floor(Math.random()*8);
+		      }
+			function getNewarr(arr){
+	        var newArr = [];
+	        newArr[0] = arr[0];
+	        newArr[1] = arr[1];
+	        newArr[2] = arr[2];
+	        newArr[3] = arr[4];
+	        newArr[4] = arr[7];
+	        newArr[5] = arr[6];
+	        newArr[6] = arr[5];
+	        newArr[7] = arr[3];
+	        return $(newArr);
+      }
+			
+
+	//获取用户信息
+		$.ajax({
+			type:"get",
+			url:" http://datainfo.duapp.com/lottery/getsuerfr.php",
+			async:true,
+			dataType:"jsonp",
+			success:function(data){
+				console.log(data);
+				var consult="";
+				for(var i in data){
+				consult+="<li><span class='war'>"+data[i].fruit+"等奖</span><span class='names'>"+data[i].userID+"</span><span class='timers'>"+data[i].timer+"</span></li>"	
+				}
+				$(".awardlist").html(consult);
+				
+				$("#marquee").kxbdMarquee({
+//					  isEqual:true,         //所有滚动的元素长宽是否相等,true,false 
+//					  loop:0,                 //循环滚动次数，0时无限         
+//					  direction:"up",       //滚动方向，"left","right","up","down"         
+//					  scrollAmount:1,     //步长         
+//					  scrollDelay:20   
+				
+				})
+				
+			}
+		});	
+	
+	
+//退出登录
+		$("#btns").on('tap',function(){
+			
+			$.ajax({
+				type:"get",
+				url:"http://datainfo.duapp.com/shopdata/getBanner.php",
+				async:true,
+				dataType:'jsonp',
+				success:function(data){
+					var getLoc=localStorage.getItem("0100")
+					var getName=JSON.parse(getLoc).userID;
+					localStorage.removeItem("0100");
+					window.location.href='header.html'
+				}
+			});
+			
+			
+		})
+
+
+})
+	
+		
+
+</script>
+</html>

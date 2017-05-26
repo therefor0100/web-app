@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>play</title>
+	<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="../../iscroll/js/swiper-3.3.1.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../iscroll/animate.min.css"/>
+	<style type="text/css">
+		#out{
+			width: 6.4rem;
+			margin: 0 auto;
+			overflow: hidden;
+			height: 100%;
+			position: absolute!important;
+			background-color: #f8f3f7;
+		}
+		/*img{
+			display: block;
+		}*/
+		.slid1 img{
+			width: 100vw;
+			display: block;
+		}
+		.p1{
+			font-size: 0.47rem;
+			text-align: right;
+			margin-right:1.23rem ;
+			line-height: 0.96rem;
+			margin-top: 0.93rem;
+			color: #787878;
+		}
+		.txt{
+			font-size:0.54rem ;
+			color: #797979;
+			margin-left: 0.23rem;
+		}
+		.txt i{
+			font-style: normal;
+			color: #e3356a;
+			font-weight: 600;
+			
+		}
+		.txt span{
+			font-size: 0.46rem;
+		}
+		.slid2{
+			width: 100%;
+			text-align: center;
+		}
+		.sw1{
+			height: 2.3rem;
+			margin-top: 0.98rem;
+		}
+		.sw2{
+			height: 2.26rem;
+			margin-top: 0.48rem;
+		}
+		.sw3{
+			height: 2.1rem;
+			width: 3.86rem;
+			position: absolute;
+			left: 0.82rem;
+			bottom:1.28rem;
+		}
+		.slid3{
+			text-align: center;
+		}
+		.slid3-1{
+			margin-top: 1.12rem;
+			margin-bottom: 0.41rem;
+			height: 0.46rem;
+			font-size: 0.46rem;
+			color: #e43669;
+			line-height: 0.46rem;
+		}
+		.slid3-3 img{
+			height: 1.89rem;
+		}
+		.slid4{
+			text-align: center;
+		}
+		.slid4-1 img{
+			height: 1.15rem;
+			margin-top: 1.44rem;
+			margin-bottom: 1.02rem;
+		}
+		.slid4-2{
+			font-size:0.36rem;
+			color: #e8356c;
+			line-height: 0.36rem;
+			height: 0.36rem;
+			margin-bottom: 2.87rem;
+			font-family: "微软雅黑";
+		}
+		.slid4-3{
+			height: 0.94rem;
+		}
+		.slid4-3 button{
+			width: 3.00rem;
+			height: 0.96rem;
+			border: 0;
+			background-image: url(../img/border.jpg);
+			background-repeat: repeat-x;
+			border-radius: 0.2rem;
+			font-size: 0.36rem;
+			color: #fff;
+			font-family: "微软雅黑";
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="swiper-container" id="out">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide slid1">
+        	<img src="../img/img4.jpg" class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s"/>
+        	<p class="p1 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s" swiper-animate-delay="0.3s">
+        		多联系，不孤单
+        	</p>
+        	<div class="txt ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="1s" swiper-animate-delay="0.3s">
+        		<i>走秀</i><span class="span1">与</span><b>你相伴</b>
+        	</div>
+        </div>
+        <div class="swiper-slide slid2">
+        	<div><img src="../img/swiper1.png" alt="" class="sw1 ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="1s" swiper-animate-delay="0.4s"/></div>
+        	<div><img src="../img/swiper2.png" alt="" class="sw2 ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0.4s"/></div>
+        	<div><img src="../img/swiper3.png" alt="" class="sw3 ani" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="1s" swiper-animate-delay="0.4s"/></div>
+        </div>
+        <div class="swiper-slide slid3">
+        	<div class="slid3-1">走秀网商品</div>
+        	<div class="slid3-2 ani"><img src="../img/img5.jpg" swiper-animate-effect="zoomIn" swiper-animate-duration="2s" swiper-animate-delay="0.5s"/></div>
+        	<div class="slid3-3"><img src="../img/img6.jpg"/></div>
+        </div>
+        <div class="swiper-slide slid4">
+        	<div class="slid4-1">
+        		<img src="../img/img7.jpg" class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.4s"/>
+        	</div>
+        	<div class="slid4-2">
+        		Now 开始走秀购物之行......
+        	</div>
+        	<div class="slid4-3">
+        		<button id="btn">开始体验</button>
+        	</div>
+        </div>
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+</div>
+	
+	
+</body>
+<script type="text/javascript" src="../js/rem.js"></script>
+<script type="text/javascript" src="../js/zepto-1.1.6.min.js"></script>
+<script type="text/javascript" src="../js/touch.min.js"></script>
+<script type="text/javascript" src="../../iscroll/iscroll/swiper/swiper-3.3.1.jquery.min.js"></script>
+<script type="text/javascript" src="../../iscroll/iscroll/swiper/swiper.animate1.0.2.min.js"></script>
+<script type="text/javascript">
+	window.onload=function(){
+		 var mySwiper = new Swiper ('.swiper-container', {
+		    direction: 'horizontal',
+		    // 如果需要分页器
+		    pagination: '.swiper-pagination',
+
+		 onInit: function(swiper){ //Swiper2.x的初始化是onFirstInit
+		    swiperAnimateCache(swiper); //隐藏动画元素 
+		    swiperAnimate(swiper); //初始化完成开始动画
+		  }, 
+		  onSlideChangeEnd: function(swiper){ 
+		    swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+		  } 
+		  
+		})  
+			
+		$("#btn").on("tap",function(){
+			window.location.href="login.html"
+		})
+	}
+</script>
+</html>
